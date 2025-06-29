@@ -1,10 +1,5 @@
 let form =  document.getElementById("book-form")
 
-function clearallfiled(){
-    title.value = "";
-    author.value = "";
-    isbn.value = ""
-}
 
 function addtotable(title,author,isbn){
     let tbody = document.getElementById('book-list')
@@ -19,14 +14,21 @@ function addtotable(title,author,isbn){
     tbody.appendChild(tr)
 }
 
-function getElementByIdname(parameterer){
-    return document.querySelector('#title'+parameterer).value
+function getElementByIdname(parameter){
+    return document.querySelector('#'+parameter).value
+}
+
+function clearallfiled(){
+    document.querySelector("#title").value=''
+    document.querySelector("#author").value=''
+    document.querySelector("#isbn").value=''
 }
 
 form.addEventListener('submit',(e)=>{
     e.preventDefault()
-    let title = querySelector('title')
-    let author =  querySelector('author')
-    let isbn = querySelector('isbn')
+    let title = getElementByIdname('title')
+    let author =  getElementByIdname('author')
+    let isbn = getElementByIdname('isbn')
     addtotable(title,author,isbn)
+    clearallfiled("")
 })
